@@ -1,5 +1,5 @@
 import { Component, OnInit, ViewEncapsulation } from '@angular/core';
-import { Flight } from '../entities/flight';
+import { Flight } from '../../entities/flight';
 import { HttpClientTestingBackend } from '@angular/common/http/testing/src/backend';
 import { HttpClient, HttpHeaders, HttpParams } from '@angular/common/http';
 import { FlightService } from './flight.service';
