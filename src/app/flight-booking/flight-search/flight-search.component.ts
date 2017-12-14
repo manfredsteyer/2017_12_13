@@ -7,14 +7,19 @@ import { FlightService } from './flight.service';
 @Component({
   selector: 'flight-search',
   templateUrl: './flight-search.component.html',
-  providers: [FlightService]
+  // providers: [FlightService]
+  
 })
 export class FlightSearchComponent implements OnInit {
 
   from: string;
   to: string;
-  flights: Array<Flight> = [];
+  // flights: Array<Flight> = [];
   selectedFlight: Flight;
+
+  get flights() {
+    return this.flightService.flights;
+  }
 
   basket: object = {
     "3": true,
@@ -31,15 +36,7 @@ export class FlightSearchComponent implements OnInit {
   }
 
   search(): void {
-
-    this.flightService
-        .find(this.from, this.to)
-        .subscribe(
-          flights => { this.flights = flights; },
-          err => { console.error('error loading flights', err); }
-        );
-
-
+    this.flightService.load(this.from, this.to);
   }
 
   select(f: Flight): void {
