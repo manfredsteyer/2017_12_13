@@ -6,11 +6,18 @@
 
   <div class="content">
 
-    <form>
+    <form #f="ngForm">
 
       <div class="form-group">
         <label>From:</label>
-        <input name="from" [(ngModel)]="from" class="form-control">
+        <input name="from" [(ngModel)]="from" class="form-control"
+               city="Graz,Hamburg,München,Bern" required minlength="3" maxlength="30" pattern="[a-zA-ZöäüÖÄÜß ]*">
+
+        <div *ngIf="f?.controls['from']?.dirty && !f?.controls['from']?.valid">...Error...</div>
+        <div *ngIf="f?.controls['from']?.hasError('pattern')">...Pattern...</div>
+        <div *ngIf="f?.controls['from']?.hasError('city')">...city...</div>
+        <pre>{{f?.controls['from']?.errors | json}}</pre>
+
       </div>
 
       <div class="form-group">

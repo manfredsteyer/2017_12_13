@@ -50,9 +50,7 @@ describe('FlightSearchComponent', () => {
       providers: [
         { provide: BASE_URL, useValue: '' }
       ]
-    }).compileComponents();
-
-    TestBed.overrideComponent(FlightSearchComponent, {
+    }).overrideComponent(FlightSearchComponent, {
       set: {
         providers: [
           { provide: FlightService, useValue: mock }
@@ -85,7 +83,7 @@ describe('FlightSearchComponent', () => {
 
     expect(comp.flights.length).toBe(3);
     expect(svc.load).toHaveBeenCalled();
-    
+
 
 
   });
