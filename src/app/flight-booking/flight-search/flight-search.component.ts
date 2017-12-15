@@ -8,7 +8,7 @@ import { FlightService } from './flight.service';
   selector: 'flight-search',
   templateUrl: './flight-search.component.html',
   // providers: [FlightService]
-  
+
 })
 export class FlightSearchComponent implements OnInit {
 
@@ -36,8 +36,10 @@ export class FlightSearchComponent implements OnInit {
   }
 
   search(): void {
+    if (!this.from || !this.to) return;
     this.flightService.load(this.from, this.to);
   }
+
 
   select(f: Flight): void {
     this.selectedFlight = f;
